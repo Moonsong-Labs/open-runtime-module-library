@@ -222,6 +222,10 @@ construct_runtime!(
 		System: frame_system::{Pallet, Call, Storage, Config, Event<T>},
 		Balances: pallet_balances::{Pallet, Call, Storage, Config<T>, Event<T>},
 		ParasOrigin: origin::{Pallet, Origin},
+		// MessageQueue pallet should be at the same index that the previous
+		// ParasUmp pallet, to avoid getting some encoding/decoding errors while
+		// executing some upward messages, more specifically while processing
+		// XCM Transact instruction within those messages.
 		MessageQueue: pallet_message_queue::{Pallet, Event<T>},
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin},
 	}
